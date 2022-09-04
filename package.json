@@ -2,8 +2,10 @@
   "name": "world-of-skontan",
   "private": "true",
   "scripts": {
-    "build": "yarn && yarn workspace @wos/server db:migrate && yarn workspace @wos/server db:push && yarn workspace @wos/server tsc",
-    "start": "yarn workspace @wos/server start"
+    "server:build": "yarn && yarn workspace @wos/server db:migrate && yarn workspace @wos/server db:push && yarn workspace @wos/server tsc",
+    "server:start": "yarn workspace @wos/server start",
+    "client:build": "yarn && yarn workspace @wos/client build",
+    "client:start": "yarn && yarn workspace @wos/client start"
   },
   "workspaces": [
     "packages/*"
