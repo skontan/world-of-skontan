@@ -41,7 +41,8 @@ function App() {
         },
       })
   );
-  const url = process.env.SERVER_URL || "http://localhost:8000/api/trpc";
+  const url =
+    process.env.REACT_APP_SERVER_URL || "http://localhost:8000/api/trpc";
   const links = [
     loggerLink(),
     httpBatchLink({
