@@ -7,8 +7,8 @@ import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { trpc } from "./utils/trpc";
 
 function AppContent() {
-  const { data } = trpc.useQuery(["hello"]);
-  const { mutate: createUserMutation } = trpc.useMutation("add_user", {
+  const { data } = trpc.useQuery(["users.hello"]);
+  const { mutate: createUserMutation } = trpc.useMutation("users.add_user", {
     onSuccess(data, variables, context) {
       console.log("Successfully created user:", { data });
       console.log({ variables, context });

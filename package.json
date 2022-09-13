@@ -5,7 +5,8 @@
     "server:build": "yarn && yarn workspace @wos/server db:migrate && yarn workspace @wos/server db:push && yarn workspace @wos/server tsc",
     "server:start": "yarn workspace @wos/server start",
     "client:build": "yarn && yarn workspace @wos/client build",
-    "client:start": "yarn && yarn workspace @wos/client start"
+    "client:start": "yarn && yarn workspace @wos/client start",
+    "db": "docker-compose up -d"
   },
   "workspaces": [
     "packages/*"
