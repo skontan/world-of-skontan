@@ -1,18 +1,29 @@
-import * as trpc from "@trpc/server";
+import { inferAsyncReturnType } from "@trpc/server";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import { prisma } from "@wos/server/src/utils/prisma";
+import { initTRPC } from "@trpc/server";
 
-export const createContext = ({
+export async function createContext({
   req,
   res,
-}: trpcExpress.CreateExpressContextOptions) => {
+}: trpcExpress.CreateExpressContextOptions) {
   return {
     prisma,
   };
-};
+}
 
-export type Context = trpc.inferAsyncReturnType<typeof createContext>;
+export type Context = inferAsyncReturnType<typeof createContext>;
 
-export const createRouter = () => {
-  return trpc.router<Context>();
-};
+const t = initTRPC.context<Context>().create({
+  errorFormatter({ shape }) {
+    return shape;
+  },
+});
+
+export const router = t.router;
+
+export const publicProcedure = t.procedure;
+
+export const middleware = t.middleware;
+
+export const mergeRouters = t.mergeRouters;
