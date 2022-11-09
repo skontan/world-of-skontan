@@ -4,7 +4,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { getFetch } from "@trpc/client";
 import { loggerLink } from "@trpc/client/links/loggerLink";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
-import { trpc } from "./utils/trpc";
+import { trpc } from "@wos/client/src/utils/trpc";
 
 function AppContent() {
   const { data } = trpc.useQuery(["users.hello"]);
