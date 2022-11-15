@@ -4,6 +4,7 @@
   "scripts": {
     "server:build": "yarn && yarn workspace @wos/server db:migrate && yarn workspace @wos/server db:push && yarn workspace @wos/server tsc",
     "server:start": "yarn workspace @wos/server start",
+    "server:dev": "yarn workspace @wos/server dev",
     "client:build": "yarn && yarn workspace @wos/client build",
     "client:start": "yarn && yarn workspace @wos/client start",
     "db": "docker-compose up -d"

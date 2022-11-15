@@ -1,7 +1,10 @@
 import { trpc } from "@wos/client/src/utils/trpc";
+import { useEffect } from "react";
 
 function App() {
   const { data } = trpc.users.hello.useQuery();
+
+  const { data: word } = trpc.words.wordOfDay.useQuery();
 
   const { mutate: createUserMutation } = trpc.users.addUser.useMutation({
     onSuccess: (data, variables, context) => {
@@ -21,6 +24,9 @@ function App() {
   return (
     <div>
       <p>{data?.message}</p>
+      <p>Dagens ord: {word?.wordOfDay}</p>
+      {word?.href ? <a href={word.href}>Se definition</a> : null}
+
       <button onClick={handleClick}>Add user</button>
     </div>
   );
