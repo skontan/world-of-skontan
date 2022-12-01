@@ -1,34 +1,14 @@
-import { trpc } from "@wos/client/src/utils/trpc";
-import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import SignUp from "./views/sign-up/sign-up.view";
+import WordOfDay from "./views/word-of-day/word-of-day.view";
 
 function App() {
-  const { data } = trpc.users.hello.useQuery();
-
-  const { data: word } = trpc.words.wordOfDay.useQuery();
-
-  const { mutate: createUserMutation } = trpc.users.addUser.useMutation({
-    onSuccess: (data, variables, context) => {
-      console.log("Successfully created user:", { data });
-      console.log({ variables, context });
-    },
-  });
-
-  const handleClick = () => {
-    createUserMutation({
-      name: "Jonathan",
-      email: "skontan@gmail.com",
-      password: "Hej123",
-    });
-  };
-
   return (
-    <div>
-      <p>{data?.message}</p>
-      <p>Dagens ord: {word?.wordOfDay}</p>
-      {word?.href ? <a href={word.href}>Se definition</a> : null}
-
-      <button onClick={handleClick}>Add user</button>
-    </div>
+    <Routes>
+      <Route path="/" element={<p>Home</p>} />
+      <Route path="/word" element={<WordOfDay />} />
+      <Route path="/sign-up" element={<SignUp />} />
+    </Routes>
   );
 }
 
