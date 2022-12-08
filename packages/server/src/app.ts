@@ -14,6 +14,7 @@ dotenv.config({ path: path.join(__dirname, "./.env") });
 const app = express();
 if (process.env.NODE_ENV !== "production") app.use(morgan("dev"));
 
+
 app.use(
   cors({
     origin: [customConfig.origin],
@@ -31,6 +32,8 @@ app.use(
 const port = customConfig.port;
 app.listen(port, () => {
   console.log(`🚀 Server listening on port ${port}`);
+  console.log(customConfig.origin);
+
 
   connectDB();
 });

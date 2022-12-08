@@ -1,5 +1,5 @@
 import path from "path";
-require("dotenv").config({ path: path.join(__dirname, "../../.env") });
+require("dotenv").config({ path: path.join(__dirname, "../../../../.env") });
 
 const customConfig: { port: number; origin: string; dbUri: string } = {
   port: parseInt(process.env.PORT ?? "8000"),
